@@ -2,4 +2,4 @@
 
 This is an example of ObjectAnimator class of Android.
 
-![Alt text](https://drive.google.com/open?id=0B1UF_L3r2NrgTXBjRFR0TExvSzg?raw=true "Optional Title")
+![Alt text](https://firebasestorage.googleapis.com/v0/b/ai-chat-bf1cc.appspot.com/o/Screenshot_1480945597.png?alt=media&token=3edaa4e4-c862-4b24-8495-20bfc036a6d7?raw=true "Optional Title")
