@@ -31,15 +31,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         imageView=(ImageView) findViewById(R.id.image);
         play=(Button) findViewById(R.id.play);
         pause=(Button) findViewById(R.id.pause);
@@ -73,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         imageView.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
 
@@ -132,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void resume(){
         if (rotationAnim!=null) {
             rotationAnim.resume();
