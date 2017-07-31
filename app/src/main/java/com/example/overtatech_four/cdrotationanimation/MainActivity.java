@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,19 +18,44 @@ import android.view.MenuItem;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int DEFAULT_SPEED = 3000;
+    private static final int MAX = 15000;
     ObjectAnimator rotationAnim;
     boolean isRotating=false;
     ImageView imageView;
     Button play,pause,stop;
+    SeekBar seekBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        seekBar=(SeekBar) findViewById(R.id.seek_bar);
+        seekBar.setProgress(DEFAULT_SPEED);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                //if (i==0||(i*100)==MAX) return;
+                int progress=MAX-(i*MAX)/100;
+                if (progress==0||progress==MAX||progress<500) return;
+                chageRotationSpeed(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
 
         imageView=(ImageView) findViewById(R.id.image);
         play=(Button) findViewById(R.id.play);
@@ -81,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (rotationAnim==null){
                     rotationAnim = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 360f);
-                    rotationAnim.setDuration(3000);
+                    rotationAnim.setDuration(DEFAULT_SPEED);
                     rotationAnim.setInterpolator(new LinearInterpolator());
                     rotationAnim.setRepeatCount(ValueAnimator.INFINITE);
                 }
@@ -151,7 +177,11 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+    public void chageRotationSpeed(int progress) {
+            if (rotationAnim!=null){
+                rotationAnim.setDuration(progress);
+            }
     }
 }

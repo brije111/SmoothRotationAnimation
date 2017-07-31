@@ -7,12 +7,9 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.overtatech_four.cdrotationanimation.MainActivity"
-    tools:showIn="@layout/activity_main">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="48dp"
-        android:gravity="center_vertical">
+    tools:showIn="@layout/activity_main"
+    android:padding="48dp"
+    android:gravity="center_vertical">
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,6 +25,7 @@
             android:adjustViewBounds="true"
             android:src="@drawable/cd" />
         <LinearLayout
+            android:id="@+id/ll"
             android:layout_below="@+id/cd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,5 +52,19 @@
 
 
         </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/speed_meter"
+        android:id="@+id/speed_meter"
+        android:layout_below="@+id/ll"
+        android:gravity="center"
+        android:padding="4dp"/>
+    <SeekBar
+        android:id="@+id/seek_bar"
+        android:max="100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/speed_meter"/>
     </RelativeLayout>
-</RelativeLayout>
