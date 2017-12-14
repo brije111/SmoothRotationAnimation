@@ -6,5 +6,9 @@ This is an example of ObjectAnimator class of Android.
 
 
 hi...wanna ride on my cock?
+<<<<<<< HEAD
 wanna suck ur cock with dip chocolate cirup...
+=======
+## Common subu...aur tej kro...aur tej...
+>>>>>>> origin
 # update for subu 14/12/2017
